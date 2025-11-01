@@ -11,6 +11,45 @@ from bs4 import BeautifulSoup
 from faker import Faker
 from fake_useragent import UserAgent
 
+# --- Begin: Save helper for Termux (paste after imports) ---
+import os
+from datetime import datetime
+
+# safe Downloads path that Android file managers show
+SAVE_FILE = os.path.expanduser('~/storage/downloads/weynFBCreate.txt')
+os.makedirs(os.path.dirname(SAVE_FILE), exist_ok=True)
+
+def save_success_account(uid: srt, password: str= None) -> bool:
+    """
+    Append a successful account line to SAVE_FILE.
+    Format: uid|password|uid|
+    """
+    try:
+        ts = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        if uid:
+            line = f"{email}|{password}|{uid}|{ts}\n"
+        else:
+            line = f"{email}|{password}|{ts}\n"
+        # append and flush to disk immediately
+        with open(SAVE_FILE, 'a', encoding='utf-8') as fh:
+            fh.write(line)
+            fh.flush()
+            try:
+                os.fsync(fh.fileno())
+            except Exception:
+                pass
+        # try to make file readable by Android file manager
+        try:
+            os.chmod(SAVE_FILE, 0o666)
+        except Exception:
+            pass
+        return True
+    except Exception as e:
+        print(f"[!] save_success_account error: {e}")
+        return False
+# --- End: Save helper ---
+
+
 # Enhanced Color codes for terminal with more styling options
 class Colors:
     GREEN = '\033[92m'
@@ -32,12 +71,12 @@ os.system('clear' if os.name != 'nt' else 'cls')
 # Beautiful WEYN banner with purple and blue
 print(f"""
 {Colors.PURPLE}╔══════════════════════════════════════════════════════════╗
-║  {Colors.BLUE}██╗    ██╗{Colors.PURPLE}███████╗{Colors.BLUE}██╗   ██╗{Colors.PURPLE}███╗   ██╗                {Colors.PURPLE}║
-║  {Colors.BLUE}██║    ██║{Colors.PURPLE}██╔════╝{Colors.BLUE}╚██╗ ██╔╝{Colors.PURPLE}████╗  ██║                {Colors.PURPLE}║
-║  {Colors.BLUE}██║ █╗ ██║{Colors.PURPLE}█████╗  {Colors.BLUE} ╚████╔╝ {Colors.PURPLE}██╔██╗ ██║                {Colors.PURPLE}║
-║  {Colors.BLUE}██║███╗██║{Colors.PURPLE}██╔══╝  {Colors.BLUE} ╚██╔╝  {Colors.PURPLE}██║╚██╗██║                {Colors.PURPLE}║
-║  {Colors.BLUE}╚███╔███╔╝{Colors.PURPLE}███████╗{Colors.BLUE}  ██║   {Colors.PURPLE}██║ ╚████║                {Colors.PURPLE}║
-║  {Colors.BLUE} ╚══╝╚══╝ {Colors.PURPLE}╚══════╝{Colors.BLUE}  ╚═╝   {Colors.PURPLE}╚═╝  ╚═══╝                {Colors.PURPLE}║
+║  {Colors.BLUE}██╗    ██╗{Colors.PURPLE}███████╗{Colors.BLUE}██╗   ██╗{Colors.PURPLE} ███╗   ██╗                {Colors.PURPLE}║
+║  {Colors.BLUE}██║    ██║{Colors.PURPLE}██╔════╝{Colors.BLUE}╚██╗ ██╔╝{Colors.PURPLE} ████╗  ██║                {Colors.PURPLE}║
+║  {Colors.BLUE}██║ █╗ ██║{Colors.PURPLE}█████╗  {Colors.BLUE} ╚████╔╝ {Colors.PURPLE} ██╔██╗ ██║                {Colors.PURPLE}║
+║  {Colors.BLUE}██║███╗██║{Colors.PURPLE}██╔══╝  {Colors.BLUE}  ╚██╔╝  {Colors.PURPLE} ██║╚██╗██║                {Colors.PURPLE}║
+║  {Colors.BLUE}╚███╔███╔╝{Colors.PURPLE}███████╗{Colors.BLUE}   ██║   {Colors.PURPLE} ██║ ╚████║                {Colors.PURPLE}║
+║  {Colors.BLUE} ╚══╝╚══╝ {Colors.PURPLE}╚══════╝{Colors.BLUE}   ╚═╝   {Colors.PURPLE} ╚═╝  ╚═══╝                {Colors.PURPLE}║
 ║                                                          ║
 ║          {Colors.CYAN}FACEBOOK ACCOUNT CREATOR - PRO VERSION{Colors.PURPLE}          ║
 ║              {Colors.GREEN}BY: WEYN DUMP • PAID TOOL{Colors.PURPLE}                   ║
