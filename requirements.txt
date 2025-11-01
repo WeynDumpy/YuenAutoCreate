@@ -1,0 +1,10 @@
+requests
+faker
+beautifulsoup4
+fake_email
+fake-useragent
+beautifulsoup4
+fake_email
+fake-useragent
+faker
+requests
