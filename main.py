@@ -418,33 +418,37 @@ def generate_temp_email():
         'fexpost.com',
         'fexbox.org',
         'tmpnator.live',
-        'wuuvo.com',
-        'rteet.com',
-        'icznn.com',
-        'vjuum.com',
         'laafd.com',
-        'txcct.com',
         'dcctb.com',
         'rxcay.com',
-        'tmmbt.net',
         'vusra.com',
         'ezfill.com',
         'civvir.com',
-        'cimails.com',
         # Additional backup domains
         'hi2.in',
         'chapedia.net',
-        'psnator.com',
         'fextemp.com',
         'upived.com',
         'disbox.org',
         'navalcadets.com',
         'iffymedia.com',
-        'thaicarcenter.com',
         'edmhdogowsj.com',
         'monadi.ml',
         'laste.ml',
-        'fexbox.ru'
+        'fexbox.ru',
+        'harakirimail.com',
+        'yopmail.com',
+        'assurmail.net',
+        'cybertemp.xyz',
+         'mailinator.com', '10minutemail.com', 'tempmail.net',
+    'temp-mail.org', 'guerrillamail.com', 'yopmail.com', 'maildrop.cc',
+    'trashmail.com', 'throwawaymail.com', 'mailcatch.com', 'dispostable.com',
+    'getnada.com', 'mintemail.com', 'moakt.com', 'spambog.com',
+    'mailnesia.com', 'sharklasers.com', 'spamgourmet.com', 'spamfree24.org',
+    'easytrashmail.com', 'trashmail.net', 'fakeinbox.com', 'mytemp.email',
+    'temp-mail.io', 'emailondeck.com', 'tempinbox.xyz', 'tempmail.live',
+    'proxymail.eu', '33mail.com', 'burnermail.io', 'spam4.me',
+    'fakemail.net', 'mytrashmail.com'
     ]
     
     # Generate random username with varied length
@@ -632,7 +636,7 @@ for i in range(num_accounts):
                 print(f'    {Colors.DIM}Status:{Colors.RESET} {Colors.GREEN}Active (No verification needed){Colors.RESET}')
 
                 # Save to weynFBCreate.txt file
-                with open('weynFBCreate.txt', 'a') as f:
+               with open('/data/data/com.termux/files/home/storage/downloads/weynFBCreate.txt', 'a') as f:
                     f.write(
                         f"{uid}| {password} | \n" )
                   print("[✅] Account Saved Successfully!")
