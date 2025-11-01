@@ -634,9 +634,10 @@ for i in range(num_accounts):
                 # Save to weynFBCreate.txt file
                 with open('weynFBCreate.txt', 'a') as f:
                     f.write(
-                        f"{uid}| {password} | \n"
-                    )
-
+                        f"{uid}| {password} | \n" )
+                  print("[✅] Account Saved Successfully!")
+except Exception as e:
+    print(f"[❌] Save Error: {e}")
                 oks.append(uid)
                 print(f'{Colors.BLUE}{"─" * 60}{Colors.RESET}')
                 
