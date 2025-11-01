@@ -682,6 +682,7 @@ for i in range(num_accounts):
 except Exception as e:
     print(f"[❌] Save Error: {e}")
                 oks.append(uid)
+
                 print(f'{Colors.BLUE}{"─" * 60}{Colors.RESET}')
                 
             else:
